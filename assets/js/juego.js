@@ -19,6 +19,7 @@ const miModulo = (() =>{
 
     // Esta función inicializa el juego
     const inicializarJuego = ( numJugadores = 2) =>{
+        
         deck = crearDeck();
         puntosJugadores = [];
         for( let i = 0; i < numJugadores; i++){
@@ -77,26 +78,27 @@ const miModulo = (() =>{
     // Esta función crea la imagen de la carta
     const crearCarta = (carta, turno) => {
         const imgCarta = document.createElement('img');
-            imgCarta.src = `cartas/${carta}.png`;
+            imgCarta.src = `assets/cartas/${carta}.png`;
             imgCarta.className = 'cartas';
             divCartasJugadores[turno].append(imgCarta);
     }
 
     // Esta función determina el ganador del juego
     const determinarGanador = () => {
-        const [puntosComputadora, puntosMinimos] = puntosJugadores;
+        const [ puntosMinimos, puntosComputadora ] = puntosJugadores;
 
         setTimeout(() => {
-            if (puntosComputadora === puntosMinimos) {
-                alert('Empataron, juega de nuevo');              
-            }else if (puntosMinimos > 21){
-                alert('Lo siento, la computadora gano');
-            }else if (puntosComputadora > 21){
-                alert('Felicitaciones, ganaste!');
-            }else{
-                alert('Lo siento, la computadora gano');
+            if( puntosComputadora === puntosMinimos ) {
+                alert('Empataron, juega de nuevo.');
+            } else if ( puntosMinimos > 21 ) {
+                alert('Lo siento, la computadora ganó.')
+            } else if( puntosComputadora > 21 ) {
+                alert('Genial, ganaste!');
+            } else {
+                alert('Lo siento, la computadora ganó.')
             }
-        }, 100);
+        }, 100 );
+        
     }
 
 
@@ -128,17 +130,20 @@ const miModulo = (() =>{
         const puntosJugador = acumularPuntos(carta, 0);
         // Agrega la carta en el Html
         crearCarta(carta, 0);
+        console.log(puntosJugador);
 
         if( puntosJugador > 21 ){
             console.warn('Lo siento, perdiste.');
             btnPedir.disabled = true;
             btnDetener.disabled = true;
             turnoComputadora(puntosJugador);
+
         }else if( puntosJugador === 21){
             console.warn('21, genial!');
             btnPedir.disabled = true;
             btnDetener.disabled = true;
             turnoComputadora(puntosJugador);
+            console.log(puntosJugador);
         }
     });
 
@@ -154,9 +159,6 @@ const miModulo = (() =>{
     btnNuevo.addEventListener('click', () => {
         inicializarJuego();
     });
-    return {
-        nuevoJuego: inicializarJuego
-    }
 })();
 
 
