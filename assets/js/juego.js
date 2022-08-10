@@ -154,6 +154,9 @@ const miModulo = (() =>{
     btnNuevo.addEventListener('click', () => {
         inicializarJuego();
     });
+    return {
+        nuevoJuego: inicializarJuego
+    }
 
 })();
 
