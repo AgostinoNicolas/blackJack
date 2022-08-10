@@ -1,5 +1,5 @@
 const miModulo = (() =>{
-    'use strick'
+    'use strick';
 
     let deck = [];
     const tipos = ['C','D','H','S'],
@@ -155,8 +155,7 @@ const miModulo = (() =>{
         inicializarJuego();
     });
 
-    
-})()
+})();
 
 
 
