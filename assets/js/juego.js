@@ -1,5 +1,3 @@
-const miModulo = (() =>{
-    'use strick';
 
     let deck = [];
     const tipos = ['C','D','H','S'],
@@ -154,11 +152,6 @@ const miModulo = (() =>{
     btnNuevo.addEventListener('click', () => {
         inicializarJuego();
     });
-    return {
-        nuevoJuego: inicializarJuego
-    }
-
-})();
 
 
 
